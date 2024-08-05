@@ -41,13 +41,12 @@ public class Order implements Serializable {
     public Order() {
     }
 
-    public Order(Long ID, Instant moment, OrderStatus orderStatus ,User client) {
+    public Order(Long ID, Instant moment, OrderStatus orderStatus, User client) {
         this.ID = ID;
         this.moment = moment;
         setOrderStatus(orderStatus);
         this.client = client;
     }
-
 
 
     public long getID() {
@@ -94,6 +93,14 @@ public class Order implements Serializable {
 
     public Set<OrderItem> getItems() {
         return this.items;
+    }
+
+    public Double getTotal() {
+        double sum = 0.0;
+        for (OrderItem x : items) {
+            sum += x.getSubTotal();
+        }
+        return sum;
     }
 
     @Override
