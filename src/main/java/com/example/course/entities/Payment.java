@@ -25,14 +25,14 @@ public class Payment implements Serializable {
     @MapsId
     private Order order;
 
-    public Payment () {
+    public Payment() {
 
     }
 
-    public Payment(Long id, Instant moment, com.example.course.entities.Order order) {
+    public Payment(Long id, Instant moment, Order order) {
         this.id = id;
         this.moment = moment;
-        order = order;
+        this.order = order;
     }
 
     public Long getId() {
@@ -51,12 +51,12 @@ public class Payment implements Serializable {
         this.moment = moment;
     }
 
-    public com.example.course.entities.Order getOrder() {
-        return order;
+    public Order getOrder() {
+        return this.order;
     }
 
-    public void setOrder(com.example.course.entities.Order order) {
-        order = order;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     @Override
